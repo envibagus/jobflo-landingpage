@@ -108,25 +108,35 @@ export default function Header() {
           </button>
         </nav>
 
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
+        {/* Mobile menu with transition */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            mobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
           <div
-            className={`md:hidden py-4 border-t ${
+            className={`py-4 border-t ${
               isScrolled
                 ? 'border-gray-200 bg-white'
                 : 'border-white/10 bg-[#1a1730]'
             }`}
           >
             <div className="flex flex-col gap-2">
-              {navigation.map((item) => (
+              {navigation.map((item, index) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`px-4 py-2 text-sm ${
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`px-4 py-2 text-sm transition-all duration-200 ${
                     isScrolled
-                      ? 'text-gray-600 hover:text-gray-900'
-                      : 'text-white/80 hover:text-white'
+                      ? 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                      : 'text-white/80 hover:text-white hover:bg-white/5'
                   }`}
+                  style={{
+                    transitionDelay: mobileMenuOpen ? `${index * 50}ms` : '0ms',
+                    transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(-10px)',
+                    opacity: mobileMenuOpen ? 1 : 0,
+                  }}
                 >
                   {item.name}
                 </Link>
@@ -138,19 +148,24 @@ export default function Header() {
               >
                 <Link
                   href="#"
+                  onClick={() => setMobileMenuOpen(false)}
                   className={`px-4 py-2 text-sm ${
                     isScrolled ? 'text-gray-600' : 'text-white/80'
                   }`}
                 >
                   Log in
                 </Link>
-                <Link href="#" className="btn-primary mx-4">
+                <Link
+                  href="#"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="btn-primary mx-4"
+                >
                   Get Started
                 </Link>
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </header>
   )

@@ -43,7 +43,7 @@ export default function HeroSection() {
 
         {/* Main headline */}
         <div className="text-center max-w-5xl mx-auto mb-6 animate-fade-in stagger-1">
-          <h1 className="text-4xl md:text-5xl lg:text-[56px] font-semibold text-white leading-[1.1] tracking-tight">
+          <h1 className="text-[33px] md:text-5xl lg:text-[56px] font-semibold text-white leading-[1.1] tracking-tight">
             Maximize sales, simplify management,
             <br className="hidden lg:block" />
             and effortlessly streamline operations

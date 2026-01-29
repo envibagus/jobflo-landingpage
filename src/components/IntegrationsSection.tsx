@@ -9,7 +9,6 @@ const industries = [
     ),
     title: 'Solar',
     description: 'Solar panel installation & maintenance',
-    highlighted: true,
   },
   {
     icon: (
@@ -19,7 +18,6 @@ const industries = [
     ),
     title: 'HVAC',
     description: 'Heating, ventilation & air conditioning',
-    highlighted: false,
   },
   {
     icon: (
@@ -29,7 +27,6 @@ const industries = [
     ),
     title: 'Roofing',
     description: 'Roof installation & repair services',
-    highlighted: false,
   },
   {
     icon: (
@@ -39,7 +36,6 @@ const industries = [
     ),
     title: 'Battery',
     description: 'Energy storage solutions',
-    highlighted: false,
   },
 ]
 
@@ -52,42 +48,34 @@ const sideCards = [
 
 export default function IntegrationsSection() {
   return (
-    <section className="integrations-section py-16 bg-white border-y border-gray-100 overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-8">
+    <section className="integrations-section py-16 bg-gradient-to-b from-white via-gray-50/30 to-white overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-10 animate-on-scroll">
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3 font-[family-name:var(--font-display)]">
+            Built for Your Industry
+          </h2>
+          <p className="text-gray-500 text-sm max-w-md mx-auto">
+            Tailored solutions for solar, HVAC, roofing, and energy storage businesses
+          </p>
+        </div>
+
         {/* Industry Cards Row - Top */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative">
           {industries.map((industry, index) => (
             <div
               key={index}
-              className={`relative p-5 rounded-lg transition-all duration-300 animate-on-scroll ${
-                industry.highlighted
-                  ? 'bg-[#140041] text-white shadow-xl'
-                  : 'bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg'
-              }`}
+              className="group relative p-5 rounded-xl bg-white border border-gray-300 cursor-pointer transition-[border-color,box-shadow] duration-300 ease-in-out hover:border-[#140041] hover:shadow-md animate-on-scroll"
             >
               <div className="flex items-start gap-3">
-                <div
-                  className={`flex items-center justify-center w-10 h-10 rounded-full shrink-0 ${
-                    industry.highlighted
-                      ? 'bg-white text-[#140041]'
-                      : 'bg-gray-100 text-gray-600'
-                  }`}
-                >
+                <div className="flex items-center justify-center w-10 h-10 rounded-full shrink-0 bg-gray-50 text-gray-500 transition-colors duration-300 ease-in-out group-hover:bg-[#140041]/10 group-hover:text-[#140041]">
                   {industry.icon}
                 </div>
                 <div>
-                  <p
-                    className={`font-semibold text-sm font-[family-name:var(--font-display)] ${
-                      industry.highlighted ? 'text-white' : 'text-gray-900'
-                    }`}
-                  >
-                    {industry.title}
+                  <p className="font-semibold text-sm font-[family-name:var(--font-display)] text-gray-900">
+                    {industry.title} Industry
                   </p>
-                  <p
-                    className={`text-xs mt-1 leading-relaxed ${
-                      industry.highlighted ? 'text-white/70' : 'text-gray-500'
-                    }`}
-                  >
+                  <p className="text-xs mt-1 leading-relaxed text-gray-500">
                     {industry.description}
                   </p>
                 </div>
@@ -96,8 +84,8 @@ export default function IntegrationsSection() {
           ))}
         </div>
 
-        {/* Connection Lines with Animated Dots */}
-        <div className="relative h-24 my-4">
+        {/* Connection Lines with Animated Dots - Hidden on mobile */}
+        <div className="relative h-24 my-4 hidden lg:block">
           <svg
             className="w-full h-full"
             viewBox="0 0 1200 96"
@@ -177,7 +165,7 @@ export default function IntegrationsSection() {
         </div>
 
         {/* Middle Row - Side Cards + Main JobFlo Card with connecting lines */}
-        <div className="relative flex items-center justify-center">
+        <div className="relative mt-8 lg:mt-0">
           {/* Apple-style subtle shimmer animation */}
           <style>{`
             @keyframes shimmer {
@@ -220,57 +208,97 @@ export default function IntegrationsSection() {
             }
           `}</style>
 
-          {/* Cards with connecting lines */}
-          <div className="relative flex items-center z-10">
-            {/* Calendar */}
-            <div className="p-4 rounded-xl bg-[#1a1730] text-white min-w-[160px] shadow-lg">
-              <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Calendar</p>
-              <p className="text-xs mt-1 text-white/60">Schedule management</p>
-            </div>
-
-            {/* Line 1 */}
-            <div className="connector-line mx-2" />
-
-            {/* Workflow */}
-            <div className="p-4 rounded-xl bg-[#1a1730] text-white min-w-[160px] shadow-lg">
-              <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Workflow</p>
-              <p className="text-xs mt-1 text-white/60">Process automation</p>
-            </div>
-
-            {/* Line 2 */}
-            <div className="connector-line mx-2" />
-
+          {/* Mobile: Grid layout */}
+          <div className="lg:hidden">
             {/* Main Center Card - JobFlo */}
-            <div className="relative bg-gradient-to-br from-purple-600 to-orange-500 p-[2px] rounded-xl shadow-2xl">
-              <div className="bg-gradient-to-br from-[#140041] to-[#2d1b69] rounded-xl px-8 py-6 flex items-center gap-4">
+            <div className="relative bg-gradient-to-br from-purple-600 to-orange-500 p-[2px] rounded-xl shadow-2xl mb-6 animate-on-scroll">
+              <div className="bg-gradient-to-br from-[#140041] to-[#2d1b69] rounded-xl px-6 py-5 flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
                 <Image
                   src="/logo-white.svg"
                   alt="JobFlo"
                   width={100}
                   height={32}
-                  className="h-8 w-auto"
+                  className="h-7 w-auto"
                 />
-                <div className="h-8 w-px bg-white/20" />
-                <p className="text-white/80 text-sm">Solar Business Platform</p>
+                <div className="hidden sm:block h-8 w-px bg-white/20" />
+                <p className="text-white/80 text-sm text-center sm:text-left">Solar Business Platform</p>
               </div>
             </div>
 
-            {/* Line 3 */}
-            <div className="connector-line mx-2" />
-
-            {/* Employee Training */}
-            <div className="p-4 rounded-xl bg-[#1a1730] text-white min-w-[160px] shadow-lg">
-              <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Employee Training</p>
-              <p className="text-xs mt-1 text-white/60">Team development</p>
+            {/* Feature cards grid for mobile */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="p-4 rounded-xl bg-[#1a1730] text-white shadow-lg animate-on-scroll">
+                <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Calendar</p>
+                <p className="text-xs mt-1 text-white/60">Schedule management</p>
+              </div>
+              <div className="p-4 rounded-xl bg-[#1a1730] text-white shadow-lg animate-on-scroll">
+                <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Workflow</p>
+                <p className="text-xs mt-1 text-white/60">Process automation</p>
+              </div>
+              <div className="p-4 rounded-xl bg-[#1a1730] text-white shadow-lg animate-on-scroll">
+                <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Employee Training</p>
+                <p className="text-xs mt-1 text-white/60">Team development</p>
+              </div>
+              <div className="p-4 rounded-xl bg-[#1a1730] text-white shadow-lg animate-on-scroll">
+                <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Premium Materials</p>
+                <p className="text-xs mt-1 text-white/60">Quality resources</p>
+              </div>
             </div>
+          </div>
 
-            {/* Line 4 */}
-            <div className="connector-line mx-2" />
+          {/* Desktop: Horizontal layout with connecting lines */}
+          <div className="hidden lg:flex items-center justify-center">
+            <div className="relative flex items-center z-10">
+              {/* Calendar */}
+              <div className="p-4 rounded-xl bg-[#1a1730] text-white min-w-[160px] shadow-lg">
+                <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Calendar</p>
+                <p className="text-xs mt-1 text-white/60">Schedule management</p>
+              </div>
 
-            {/* Premium Materials */}
-            <div className="p-4 rounded-xl bg-[#1a1730] text-white min-w-[160px] shadow-lg">
-              <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Premium Materials</p>
-              <p className="text-xs mt-1 text-white/60">Quality resources</p>
+              {/* Line 1 */}
+              <div className="connector-line mx-2" />
+
+              {/* Workflow */}
+              <div className="p-4 rounded-xl bg-[#1a1730] text-white min-w-[160px] shadow-lg">
+                <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Workflow</p>
+                <p className="text-xs mt-1 text-white/60">Process automation</p>
+              </div>
+
+              {/* Line 2 */}
+              <div className="connector-line mx-2" />
+
+              {/* Main Center Card - JobFlo */}
+              <div className="relative bg-gradient-to-br from-purple-600 to-orange-500 p-[2px] rounded-xl shadow-2xl">
+                <div className="bg-gradient-to-br from-[#140041] to-[#2d1b69] rounded-xl px-8 py-6 flex items-center gap-4">
+                  <Image
+                    src="/logo-white.svg"
+                    alt="JobFlo"
+                    width={100}
+                    height={32}
+                    className="h-8 w-auto"
+                  />
+                  <div className="h-8 w-px bg-white/20" />
+                  <p className="text-white/80 text-sm">Solar Business Platform</p>
+                </div>
+              </div>
+
+              {/* Line 3 */}
+              <div className="connector-line mx-2" />
+
+              {/* Employee Training */}
+              <div className="p-4 rounded-xl bg-[#1a1730] text-white min-w-[160px] shadow-lg">
+                <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Employee Training</p>
+                <p className="text-xs mt-1 text-white/60">Team development</p>
+              </div>
+
+              {/* Line 4 */}
+              <div className="connector-line mx-2" />
+
+              {/* Premium Materials */}
+              <div className="p-4 rounded-xl bg-[#1a1730] text-white min-w-[160px] shadow-lg">
+                <p className="font-semibold text-sm font-[family-name:var(--font-display)]">Premium Materials</p>
+                <p className="text-xs mt-1 text-white/60">Quality resources</p>
+              </div>
             </div>
           </div>
         </div>
