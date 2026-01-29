@@ -59,7 +59,7 @@ export default function IntegrationsSection() {
           {industries.map((industry, index) => (
             <div
               key={index}
-              className={`relative p-5 rounded-lg transition-all duration-300 ${
+              className={`relative p-5 rounded-lg transition-all duration-300 animate-on-scroll ${
                 industry.highlighted
                   ? 'bg-[#140041] text-white shadow-xl'
                   : 'bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg'

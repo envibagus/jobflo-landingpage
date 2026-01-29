@@ -65,148 +65,166 @@ const legalLinks = [
 
 export default function Footer() {
   return (
-    <footer className="footer-section relative bg-[#1a1730] overflow-hidden">
-      {/* Main content container */}
-      <div className="relative max-w-[1280px] mx-auto px-8 pt-16">
-        {/* Top section - Description & Links */}
-        <div className="flex flex-col lg:flex-row justify-between gap-12 mb-16">
-          {/* Left side - Description & Social */}
-          <div className="lg:max-w-[380px]">
-            <p className="text-white/70 text-[15px] leading-relaxed mb-8">
-              Team management tool for tracking members,
-              <br />
-              mentions, tasks, and communication.
-            </p>
+    <footer className="footer-section relative bg-white overflow-hidden">
+      {/* Gradient background - positioned behind the dark container */}
+      <div className="absolute bottom-0 left-0 right-0 h-[600px]">
+        <div
+          className="w-full h-full"
+          style={{
+            background: `linear-gradient(to bottom,
+              transparent 0%,
+              transparent 25%,
+              rgba(168, 85, 247, 0.5) 50%,
+              rgba(251, 146, 60, 0.6) 75%,
+              rgba(253, 186, 116, 0.7) 100%
+            )`
+          }}
+        />
+      </div>
 
-            {/* Social links */}
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <Link
-                  key={social.name}
-                  href={social.href}
-                  className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/40 transition-colors"
-                  aria-label={social.name}
+      {/* Dark blue container with rounded corners */}
+      <div className="relative max-w-[1400px] mx-auto px-6 pt-6 pb-8">
+        <div className="bg-[#1a1730] rounded-3xl overflow-hidden shadow-2xl">
+          {/* Main content container */}
+          <div className="max-w-[1200px] mx-auto px-8 pt-16">
+            {/* Top section - Description & Links */}
+            <div className="flex flex-col lg:flex-row justify-between gap-12 mb-16">
+              {/* Left side - Description & Social */}
+              <div className="lg:max-w-[380px]">
+                <p className="text-white/70 text-[15px] leading-relaxed mb-8">
+                  The all-in-one platform for solar, HVAC,
+                  <br />
+                  and roofing businesses to grow faster.
+                </p>
+
+                {/* Social links */}
+                <div className="flex gap-3">
+                  {socialLinks.map((social) => (
+                    <Link
+                      key={social.name}
+                      href={social.href}
+                      className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/40 transition-colors"
+                      aria-label={social.name}
+                    >
+                      {social.icon}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right side - Links */}
+              <div className="flex flex-wrap gap-16 lg:gap-24">
+                {/* Product */}
+                <div>
+                  <h4 className="text-[11px] font-medium text-white/40 uppercase tracking-wider mb-5">
+                    Product
+                  </h4>
+                  <ul className="space-y-3">
+                    {footerLinks.product.map((link) => (
+                      <li key={link.name}>
+                        <Link
+                          href={link.href}
+                          className="text-[15px] text-white/80 hover:text-white transition-colors"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Resources */}
+                <div>
+                  <h4 className="text-[11px] font-medium text-white/40 uppercase tracking-wider mb-5">
+                    Resources
+                  </h4>
+                  <ul className="space-y-3">
+                    {footerLinks.resources.map((link) => (
+                      <li key={link.name}>
+                        <Link
+                          href={link.href}
+                          className="text-[15px] text-white/80 hover:text-white transition-colors"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Company */}
+                <div>
+                  <h4 className="text-[11px] font-medium text-white/40 uppercase tracking-wider mb-5">
+                    Company
+                  </h4>
+                  <ul className="space-y-3">
+                    {footerLinks.company.map((link) => (
+                      <li key={link.name}>
+                        <Link
+                          href={link.href}
+                          className="inline-flex items-center gap-2 text-[15px] text-white/80 hover:text-white transition-colors"
+                        >
+                          {link.name}
+                          {link.badge && (
+                            <span className="px-2 py-0.5 text-[10px] font-medium bg-white/10 text-white/70 rounded border border-white/20">
+                              {link.badge}
+                            </span>
+                          )}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Large JobFlo text watermark */}
+            <div className="relative w-full overflow-hidden py-8">
+              <div className="flex justify-center">
+                <svg
+                  viewBox="0 0 900 220"
+                  className="w-full max-w-[1200px] h-auto"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  {social.icon}
-                </Link>
-              ))}
+                  <text
+                    x="50%"
+                    y="70%"
+                    dominantBaseline="middle"
+                    textAnchor="middle"
+                    fontSize="260"
+                    fontFamily="var(--font-display), system-ui, sans-serif"
+                    fontWeight="600"
+                    fill="none"
+                    stroke="rgba(255,255,255,0.12)"
+                    strokeWidth="1.5"
+                  >
+                    JobFlo
+                  </text>
+                </svg>
+              </div>
             </div>
-          </div>
 
-          {/* Right side - Links */}
-          <div className="flex flex-wrap gap-16 lg:gap-24">
-            {/* Product */}
-            <div>
-              <h4 className="text-[11px] font-medium text-white/40 uppercase tracking-wider mb-5">
-                Product
-              </h4>
-              <ul className="space-y-3">
-                {footerLinks.product.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-[15px] text-white/80 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
+            {/* Bottom bar */}
+            <div className="flex flex-col md:flex-row justify-between items-center py-6 border-t border-white/10">
+              <p className="text-sm text-white/40 mb-4 md:mb-0">
+                © 2026 JobFlo
+              </p>
+              <div className="flex gap-8">
+                {legalLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="text-sm text-white/50 hover:text-white/80 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
                 ))}
-              </ul>
+              </div>
             </div>
-
-            {/* Resources */}
-            <div>
-              <h4 className="text-[11px] font-medium text-white/40 uppercase tracking-wider mb-5">
-                Resources
-              </h4>
-              <ul className="space-y-3">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-[15px] text-white/80 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h4 className="text-[11px] font-medium text-white/40 uppercase tracking-wider mb-5">
-                Company
-              </h4>
-              <ul className="space-y-3">
-                {footerLinks.company.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="inline-flex items-center gap-2 text-[15px] text-white/80 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                      {link.badge && (
-                        <span className="px-2 py-0.5 text-[10px] font-medium bg-white/10 text-white/70 rounded border border-white/20">
-                          {link.badge}
-                        </span>
-                      )}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Large JobFlo text watermark */}
-        <div className="relative w-full overflow-hidden py-8">
-          <div className="flex justify-center">
-            <svg
-              viewBox="0 0 900 200"
-              className="w-full max-w-[1100px] h-auto"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <text
-                x="50%"
-                y="75%"
-                dominantBaseline="middle"
-                textAnchor="middle"
-                fontSize="220"
-                fontFamily="var(--font-display), system-ui, sans-serif"
-                fontWeight="600"
-                fill="none"
-                stroke="rgba(255,255,255,0.12)"
-                strokeWidth="1.5"
-              >
-                JobFlo
-              </text>
-            </svg>
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center py-6 border-t border-white/10">
-          <p className="text-sm text-white/40 mb-4 md:mb-0">
-            © 2026 JobFlo
-          </p>
-          <div className="flex gap-8">
-            {legalLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm text-white/50 hover:text-white/80 transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
           </div>
         </div>
       </div>
-
-      {/* Bottom gradient bar */}
-      <div className="h-16 bg-gradient-to-r from-purple-500/60 via-orange-400/70 to-orange-300/80" />
     </footer>
   )
 }

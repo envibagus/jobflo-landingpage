@@ -112,7 +112,9 @@ export default function Header() {
         {mobileMenuOpen && (
           <div
             className={`md:hidden py-4 border-t ${
-              isScrolled ? 'border-gray-200 bg-white' : 'border-white/10'
+              isScrolled
+                ? 'border-gray-200 bg-white'
+                : 'border-white/10 bg-[#1a1730]'
             }`}
           >
             <div className="flex flex-col gap-2">

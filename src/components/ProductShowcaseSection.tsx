@@ -46,7 +46,7 @@ export default function ProductShowcaseSection() {
       <div className="max-w-[1120px] mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           {/* Left content */}
-          <div className="lg:w-[400px] shrink-0">
+          <div className="lg:w-[400px] shrink-0 animate-on-scroll-left">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 mb-6">
               <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center">
@@ -92,7 +92,7 @@ export default function ProductShowcaseSection() {
           </div>
 
           {/* Right - Product mockup */}
-          <div className="flex-1 relative">
+          <div className="flex-1 relative animate-on-scroll-right" style={{ transitionDelay: '200ms' }}>
             <div className="relative rounded-2xl overflow-hidden border border-gray-200 bg-gradient-to-br from-orange-50 via-purple-50 to-blue-50">
               {/* Animated gradient background */}
               <div className="absolute inset-0">

@@ -162,15 +162,28 @@
 
   .card-feature {
     background: white;
-    border: 1px solid var(--color-border-light);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: var(--radius-2xl);
     overflow: hidden;
     transition: all 0.3s ease;
   }
 
   .card-feature:hover {
-    border-color: var(--color-border);
-    box-shadow: var(--shadow-lg);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-feature-small {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .card-feature-small:hover {
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md);
   }
 
   .text-gradient {
@@ -242,4 +255,49 @@
   .stagger-3 { animation-delay: 0.3s; }
   .stagger-4 { animation-delay: 0.4s; }
   .stagger-5 { animation-delay: 0.5s; }
+
+  /* Scroll-triggered animations */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-on-scroll-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  .animate-on-scroll-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .animate-on-scroll-right {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  .animate-on-scroll-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .animate-on-scroll-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animate-on-scroll-scale.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

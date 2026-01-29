@@ -1,39 +1,58 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 const faqs = [
   {
-    question: 'How do I get started?',
-    answer: "You can sign up with a work email and immediately jump in with a free trial. You'll have one week with access to all features to get a sense of how Jobflo can help your solar business grow.",
+    question: 'How does Jobflo help manage solar installations?',
+    answer: "Jobflo streamlines your entire solar workflow from lead capture to project completion. Track permits, schedule installations, manage inventory, and communicate with customers—all in one platform designed specifically for solar and HVAC contractors.",
   },
   {
-    question: 'Can I work with my whole team?',
-    answer: 'Absolutely! Jobflo is built for teams of all sizes. You can invite unlimited team members, assign roles and permissions, and collaborate seamlessly on projects and leads.',
+    question: 'Can I manage multiple crews and job sites?',
+    answer: 'Absolutely! Jobflo supports unlimited crews and job sites. Assign technicians to projects, track their progress in real-time, manage schedules, and ensure every installation is completed on time and within budget.',
   },
   {
-    question: 'Where can I search for candidates?',
-    answer: 'Jobflo integrates with major job boards and candidate databases. You can search, filter, and manage candidates directly within the platform, streamlining your hiring process for solar technicians and sales teams.',
+    question: 'Does Jobflo integrate with proposal and design tools?',
+    answer: 'Yes! Jobflo integrates with popular solar design tools like Aurora, OpenSolar, and Helioscope. Generate proposals, sync system designs, and convert quotes to active projects seamlessly.',
   },
   {
-    question: 'Will there be more updates?',
-    answer: 'Yes! We release new features and improvements every month based on customer feedback. Our roadmap includes advanced analytics, AI-powered lead scoring, and expanded integrations.',
+    question: 'How does the lead management system work?',
+    answer: 'Our CRM captures leads from multiple sources, scores them automatically, and routes them to your sales team. Track every touchpoint, automate follow-ups, and convert more prospects into paying customers.',
   },
   {
-    question: 'Who does Jobflo work the best for?',
-    answer: 'Jobflo is specifically designed for solar installation companies, from small residential installers to large commercial operations. It works best for teams looking to streamline sales, project management, and customer communication.',
+    question: 'Is Jobflo suitable for HVAC and roofing companies?',
+    answer: 'Yes! While built for solar, Jobflo is perfect for HVAC, roofing, and battery storage companies. The platform adapts to your workflow with customizable pipelines, job types, and reporting for any home service business.',
   },
 ]
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(0)
+  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <section className="faq-section py-20 bg-white">
+    <section ref={sectionRef} className="faq-section py-20 bg-white">
       <div className="max-w-[540px] mx-auto px-6">
         {/* Section header */}
-        <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-10 font-[family-name:var(--font-display)]">
+        <h2 className={`text-2xl md:text-3xl font-semibold text-gray-900 mb-10 font-[family-name:var(--font-display)] transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           Frequently asked questions
         </h2>
 
@@ -42,7 +61,8 @@ export default function FAQSection() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border-b border-gray-100 last:border-b-0"
+              className={`border-b border-gray-100 last:border-b-0 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: isVisible ? `${(index + 1) * 100}ms` : '0ms' }}
             >
               <button
                 className="w-full flex items-start justify-between py-4 text-left group"

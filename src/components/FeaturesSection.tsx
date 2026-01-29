@@ -52,7 +52,7 @@ function FeatureCard({
   const isLarge = size === 'large'
 
   return (
-    <div className={`card-feature group ${isLarge ? 'col-span-1' : ''}`}>
+    <div className={`${isLarge ? 'card-feature' : 'card-feature-small'} group ${isLarge ? 'col-span-1' : ''}`}>
       <div className={`p-5 ${isLarge ? 'pb-0' : 'pb-0'}`}>
         {/* Badge */}
         <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gray-100 mb-4">
@@ -72,14 +72,16 @@ function FeatureCard({
       </div>
 
       {/* Feature Image */}
-      <div className={`relative overflow-hidden ${isLarge ? 'h-[300px]' : 'h-[200px]'} mt-4`}>
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover object-top"
-          sizes={isLarge ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
-        />
+      <div className={`${isLarge ? 'h-[300px]' : 'h-[200px]'} mt-4 mx-5`}>
+        <div className="relative w-full h-full overflow-hidden rounded-lg">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover object-top"
+            sizes={isLarge ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
+          />
+        </div>
       </div>
     </div>
   )
@@ -87,10 +89,15 @@ function FeatureCard({
 
 export default function FeaturesSection() {
   return (
-    <section className="features-section py-20 bg-gradient-to-b from-white via-gray-50/50 to-white">
+    <section
+      className="features-section py-20 relative"
+      style={{
+        background: 'linear-gradient(180deg, white 0%, rgba(243, 232, 255, 0.35) 30%, rgba(255, 237, 213, 0.4) 70%, rgba(254, 215, 170, 0.3) 100%)'
+      }}
+    >
       <div className="max-w-[1120px] mx-auto px-6">
         {/* Section header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-on-scroll">
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 font-[family-name:var(--font-display)]">
             More features
           </h2>
@@ -98,29 +105,31 @@ export default function FeaturesSection() {
 
         {/* Main features - 2 column */}
         <div className="grid md:grid-cols-2 gap-4 mb-4">
-          {mainFeatures.map((feature) => (
-            <FeatureCard
-              key={feature.title}
-              badge={feature.badge}
-              title={feature.title}
-              description={feature.description}
-              image={feature.image}
-              size="large"
-            />
+          {mainFeatures.map((feature, index) => (
+            <div key={feature.title} className="animate-on-scroll" style={{ transitionDelay: `${index * 100}ms` }}>
+              <FeatureCard
+                badge={feature.badge}
+                title={feature.title}
+                description={feature.description}
+                image={feature.image}
+                size="large"
+              />
+            </div>
           ))}
         </div>
 
         {/* Small features - 3 column */}
         <div className="grid md:grid-cols-3 gap-4">
-          {smallFeatures.map((feature) => (
-            <FeatureCard
-              key={feature.title}
-              badge={feature.badge}
-              title={feature.title}
-              description={feature.description}
-              image={feature.image}
-              size="small"
-            />
+          {smallFeatures.map((feature, index) => (
+            <div key={feature.title} className="animate-on-scroll" style={{ transitionDelay: `${(index + 2) * 100}ms` }}>
+              <FeatureCard
+                badge={feature.badge}
+                title={feature.title}
+                description={feature.description}
+                image={feature.image}
+                size="small"
+              />
+            </div>
           ))}
         </div>
       </div>

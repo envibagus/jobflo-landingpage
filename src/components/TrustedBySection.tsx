@@ -21,7 +21,7 @@ const logos = [
 export default function TrustedBySection() {
   return (
     <section className="trusted-by-section py-16 bg-white overflow-hidden">
-      <div className="relative">
+      <div className="relative animate-on-scroll">
         {/* Gradient masks for smooth fade */}
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />

@@ -8,9 +8,9 @@ export default function CallToAction() {
       aria-labelledby="cta-heading"
     >
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="relative flex flex-col lg:flex-row items-start min-h-[500px]">
+        <div className="relative flex flex-col lg:flex-row items-center min-h-[500px]">
           {/* CTA Content - Left Side */}
-          <div className="lg:w-[480px] shrink-0 z-10 pt-8">
+          <div className="lg:w-[480px] shrink-0 z-10 animate-on-scroll-left">
             <h2
               id="cta-heading"
               className="text-3xl md:text-[32px] font-medium text-gray-900 mb-4 font-[family-name:var(--font-display)] leading-tight tracking-tight"
@@ -41,68 +41,66 @@ export default function CallToAction() {
 
           {/* Stacked Dashboard Images - Right Side */}
           <div
-            className="absolute right-[-200px] top-0 bottom-0 w-[900px] lg:w-[1000px]"
-            style={{ perspective: '1500px' }}
+            className="absolute right-[-280px] top-[-40px] bottom-0 w-[950px] lg:w-[1100px] animate-on-scroll-right"
+            style={{ perspective: '2000px', transitionDelay: '200ms' }}
           >
             <div
               className="relative w-full h-full"
               style={{
                 transformStyle: 'preserve-3d',
-                transform: 'rotateY(-15deg) rotateX(5deg)',
+                transform: 'rotateY(-12deg) rotateX(8deg)',
               }}
             >
-              {/* Bottom Image (Back layer) */}
+              {/* Bottom Image (Back layer) - Dashboard */}
               <div
-                className="absolute w-[700px] shadow-2xl rounded-lg overflow-hidden"
+                className="absolute w-[750px] rounded-xl overflow-hidden cursor-pointer transition-all duration-300 ease-out hover:-translate-y-4 hover:scale-[1.02]"
                 style={{
-                  left: '0',
-                  top: '180px',
-                  transform: 'translateZ(-100px)',
-                  opacity: 0.85,
+                  left: '40px',
+                  top: '320px',
+                  transform: 'translateZ(30px)',
                 }}
               >
                 <Image
-                  src="/images/cta-bottom.svg"
+                  src="/images/cta-bottom.png"
                   alt="Jobflo Dashboard Analytics"
-                  width={700}
-                  height={450}
+                  width={750}
+                  height={500}
                   className="w-full h-auto"
                 />
               </div>
 
-              {/* Middle Image */}
+              {/* Middle Image - Project Information */}
               <div
-                className="absolute w-[700px] shadow-2xl rounded-lg overflow-hidden"
+                className="absolute w-[750px] rounded-xl overflow-hidden cursor-pointer transition-all duration-300 ease-out hover:-translate-y-4 hover:scale-[1.02]"
                 style={{
-                  left: '80px',
-                  top: '90px',
+                  left: '180px',
+                  top: '200px',
                   transform: 'translateZ(0px)',
-                  opacity: 0.92,
                 }}
               >
                 <Image
-                  src="/images/cta-middle.svg"
+                  src="/images/cta-middle.png"
                   alt="Jobflo Project Management"
-                  width={700}
-                  height={450}
+                  width={750}
+                  height={500}
                   className="w-full h-auto"
                 />
               </div>
 
-              {/* Top Image (Front layer) */}
+              {/* Top Image (Front layer) - Contact Information */}
               <div
-                className="absolute w-[700px] shadow-2xl rounded-lg overflow-hidden"
+                className="absolute w-[750px] rounded-xl overflow-hidden cursor-pointer transition-all duration-300 ease-out hover:-translate-y-4 hover:scale-[1.02]"
                 style={{
-                  left: '160px',
-                  top: '0px',
-                  transform: 'translateZ(100px)',
+                  left: '400px',
+                  top: '100px',
+                  transform: 'translateZ(80px)',
                 }}
               >
                 <Image
-                  src="/images/cta-top.svg"
+                  src="/images/cta-top.png"
                   alt="Jobflo Contact Management"
-                  width={700}
-                  height={450}
+                  width={750}
+                  height={500}
                   className="w-full h-auto"
                 />
               </div>

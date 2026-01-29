@@ -14,7 +14,7 @@ export default function HeroSection() {
       </div>
 
       {/* Solar panel background illustration */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1800px] pointer-events-none">
+      <div className="absolute bottom-[500px] left-1/2 -translate-x-1/2 w-full max-w-[1800px] pointer-events-none">
         <Image
           src="/images/hero-bg.png"
           alt=""
@@ -25,7 +25,7 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="relative max-w-[1120px] mx-auto px-6 pt-32 pb-20">
+      <div className="relative max-w-[1120px] mx-auto px-6 pt-[136px] pb-12">
         {/* Announcement badge */}
         <div className="flex justify-center mb-8 animate-fade-in">
           <Link
@@ -42,9 +42,11 @@ export default function HeroSection() {
         </div>
 
         {/* Main headline */}
-        <div className="text-center max-w-4xl mx-auto mb-6 animate-fade-in stagger-1">
+        <div className="text-center max-w-5xl mx-auto mb-6 animate-fade-in stagger-1">
           <h1 className="text-4xl md:text-5xl lg:text-[56px] font-semibold text-white leading-[1.1] tracking-tight">
-            Maximize sales, simplify management, and effortlessly streamline operations
+            Maximize sales, simplify management,
+            <br className="hidden lg:block" />
+            and effortlessly streamline operations
           </h1>
         </div>
 
@@ -64,27 +66,34 @@ export default function HeroSection() {
             </svg>
           </Link>
           <Link href="#" className="btn-secondary px-6 py-3 bg-white/10 border-white/20 text-white hover:bg-white/20">
-            Email Us
+            Demo
           </Link>
         </div>
 
-        {/* Product mockup - Full size */}
-        <div className="relative mx-auto animate-fade-in stagger-4">
-          {/* Decorative glow behind mockup */}
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-orange-500/20 via-purple-500/10 to-transparent rounded-full blur-[60px]" />
+      </div>
 
-          {/* Mockup container - Larger width */}
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-            <Image
-              src="/images/hero-mockup.png"
-              alt="Jobflo Dashboard - Project Management"
-              width={1400}
-              height={875}
-              className="w-full h-auto"
-              priority
-              quality={100}
-            />
-          </div>
+      {/* Product mockup - Full size, outside container for full width */}
+      <div className="relative max-w-[1400px] mx-auto px-6 pb-0 animate-fade-in stagger-4">
+        {/* Decorative glow behind mockup - positioned to be visible */}
+        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-orange-500/30 via-purple-500/20 to-transparent rounded-full blur-[80px] z-0" />
+
+        {/* Mockup container */}
+        <div className="relative z-10">
+          <Image
+            src="/images/hero-mockup.svg"
+            alt="Jobflo Dashboard - Project Management"
+            width={1400}
+            height={840}
+            className="w-full h-auto"
+            priority
+          />
+          {/* Gradient fade overlay - covers bottom 50% */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-[50%] pointer-events-none"
+            style={{
+              background: 'linear-gradient(to bottom, transparent 0%, white 100%)'
+            }}
+          />
         </div>
       </div>
     </section>

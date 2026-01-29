@@ -7,10 +7,13 @@ import ProductShowcaseSection from '@/components/ProductShowcaseSection'
 import FAQSection from '@/components/FAQSection'
 import CallToAction from '@/components/CallToAction'
 import Footer from '@/components/Footer'
+import ScrollAnimationInit from '@/components/ScrollAnimationInit'
 
 export default function HomePage() {
   return (
     <main className="min-h-screen">
+      <ScrollAnimationInit />
+
       {/* Navigation Header */}
       <Header />
 
